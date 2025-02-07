@@ -20,7 +20,7 @@ Active Directory home lab Environment using Oracle Virtual Box. Configuring and 
 <h2>Program walk-through:</h2>
 
 <p align="center">
-Launch the utility: <br/>
+Creating Users with Powershell: <br/>
 <img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
