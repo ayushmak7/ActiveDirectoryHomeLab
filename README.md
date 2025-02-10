@@ -1,16 +1,22 @@
-<h1>Active Directory Home Lab</h1>
+<h1>Active Directory Home Lab using PowerShell</h1>
 
- ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
 
 <h2>Description</h2>
-Active Directory home lab Environment using Oracle Virtual Box. Configuring and running this lab will help develop understanding of how active directory and windows networking works.
+This project involves setting up a home lab envrionment to stimulate an enterprise Active Directory (AD) setup using Windows Server 2019 as the Domain Controller (DC) and Windows 10 as a client machine. This lab will be hosted on Oracle VirtualBox, with configurations and automation done through PowerShell script. Configuring and running this lab will allow you to test and practice AD management, Group Policy and user authentication in a controlled environment. You will also gain an understading of how windows domain networks work. 
 <br />
 
 
 <h2>Languages and Utilities Used</h2>
 
-- <b>PowerShell</b> 
-- <b>Oracle Virtual Box<b>
+- <b>PowerShell</b>
+- <b>Command Prompt (CMD)</b>
+- <b>Oracle VirtualBox<b>
+- <b>Windows Server 2019 ISO (Domain Controller)<b>
+- <b>Windows 10 ISO (Client)<b>
+- <b>Active Directory Domain Services (AD DS)<b>
+- <b>Domain Name System (DNS)<b>
+- <b>Dynamic Host Configuration Protocol (DHCP)<b>
+- <b>Remote Server Administration Tools (RSAT) and N
 
 <h2>Environments Used </h2>
 
