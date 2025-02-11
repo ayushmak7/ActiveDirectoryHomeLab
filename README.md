@@ -2,7 +2,7 @@
 
 
 <h2>Description</h2>
-This project involves setting up a home lab envrionment to stimulate an enterprise Active Directory (AD) setup using Windows Server 2019 as the Domain Controller (DC) and Windows 10 as a client machine. This lab will be hosted on Oracle VirtualBox, with configurations and automation done through PowerShell script. Configuring and running this lab will allow you to test and practice AD management, Group Policy and user authentication in a controlled environment. You will also gain an understading of how windows domain networks work. 
+This project involves setting up a home lab envrionment to stimulate an enterprise Active Directory (AD) setup using Windows Server 2019 as the Domain Controller (DC) and Windows 10 as a client machine. This lab will be hosted on Oracle VirtualBox, with configurations and automation done through PowerShell script. Configuring and running this lab will allow you to test and practice AD management, Group Policy and user authentication in a controlled environment. You will also gain an understanding of how windows domain networks work. 
 <br />
 
 
@@ -23,8 +23,14 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
 - <b>Windows Server 2019 VM - configured as Domain Controller<b>
 - <b>Windows 10 VM - configured as a domain-joined Client<b>
+- <b>Network Configurations on DC -> 2 adapters: 1. NAT = Internet (assigned by Oracle VirtualBox) and 2. Internal Network = Static IP, for communication between the Domain Controller and other virtual machines (Windows 10 client)
 
-<h2>Program walk-through:</h2>
+<h2>Project walk-through:</h2>
+
+
+
+
+
 
 <p align="center">
 Creating Users with Powershell: <br/>
