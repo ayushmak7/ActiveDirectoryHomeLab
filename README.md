@@ -16,12 +16,13 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 - <b>Active Directory Domain Services (AD DS)<b>
 - <b>Domain Name System (DNS)<b>
 - <b>Dynamic Host Configuration Protocol (DHCP)<b>
-- <b>Remote Server Administration Tools (RSAT) and N
+- <b>Remote Access Service / Network Address Translation (RAS/NAT)<b>
 
 <h2>Environments Used </h2>
 
-- <b>Windows 10</b> (21H2)
-- <b>Server 2019<b>
+- <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
+- <b>Windows Server 2019 VM - configured as Domain Controller<b>
+- <b>Windows 10 VM - configured as a domain-joined Client<b>
 
 <h2>Program walk-through:</h2>
 
