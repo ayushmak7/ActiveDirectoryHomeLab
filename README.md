@@ -103,10 +103,10 @@ Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox
 1. Install Windows 10 on the second VM.
 2. Assign a static IP (Internal) or configure DHCP to use the Domain Controller's IP as the DNS server.
 3. Join Windows 10 to the Domain:
-  - Go to Settings → System → About → Rename this PC (Advanced settings)
-  - Click Change → Enter Computer name as "CLIENT1" 
-  - Select Domain and enter "mydomain.com" and provide domain admin credentials (Administrator account) 
-  - Restart the VM.
+    - Go to Settings → System → About → Rename this PC (Advanced settings)
+    - Click Change → Enter Computer name as "CLIENT1" 
+    - Select Domain and enter "mydomain.com" and provide domain admin credentials (Administrator account)
+    -  Restart the VM.
 
 
 
