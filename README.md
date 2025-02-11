@@ -26,14 +26,14 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 - <b>Windows 10 VM - configured as a domain-joined Client</b>
 - <b>Network Configurations - 2 network adapters:</b>
   1. NAT (Internet)
-  2. Internal Network</b>
+  2. Internal network</b>
 
 
 <h2>Project walk-through:</h2>
 
 Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 1. Install Windows Server 2019 on the first VM.
-2. Network configuration : Change adapter option -> Rename the two network: e.g., 1. Internet and 2. Internal and  assign a static IP address to the Internal network. 
+2. Network configuration : Change adapter option -> Rename the two network adapters: e.g., 1. Internet and 2. Internal and assign a static IP address to the Internal network (e.g., 172.16.0.1). 
 3. Rename the device (e.g., DC-winserver19) and restart.
 4. Install **Active Directory Domain Services (AD DS)**:
    - Open Server Manager → Add Roles and Features
@@ -79,9 +79,10 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
     2. In the left panel, expand your server name → IPv4.
     3. Right-click IPv4 → New Scope.
     4. Click Next, then enter:
-       - Scope Name: AD_Network
-       - Starting IP: 192.168.1.100
-       -  Ending IP: 192.168.1.200
+       - Scope Name: 172.16.0.100-200 (Internal network IP range)
+       - Starting IP: 172.16.0.100
+       -  Ending IP: 172.16.0.200
+       -  Lenght: 24
        -  Subnet Mask: 255.255.255.0
        - Click Next.
     5. Add Exclusions (Optional) -> If you want to exclude certain addresses (e.g., 192.168.1.1 for the DC), add them here. Click Next.
