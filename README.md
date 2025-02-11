@@ -35,18 +35,18 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 1. Install Windows Server 2019 on the first VM.
 2. Network configuration : Change adapter option -> Rename the two network adapters: e.g., 1. Internet and 2. Internal and assign a static IP address to the Internal network (e.g., 172.16.0.1). 
 3. Rename the device (e.g., DC-winserver19) and restart.
-4. Install **Active Directory Domain Services (AD DS)**:
+4. Install **Active Directory Domain Services (AD DS)** on Windows Server 2019 (DC):
    - Open Server Manager → Add Roles and Features
    - Select Active Directory Domain Services (AD DS) and DNS Server
    - Complete the installation and restart the VM.
 5. Promote the Server to a Domain Controller:
    - Open Server Manager → Click Promote this server to a domain controller
-   - Select "Add a new forest" and enter a domain name (e.g., mydomain.com).
+   - Select "Add a new forest" and enter a domain name (e.g., mydomain.com as FQDN).
    - Configure DNS and complete the promotion.
-6. Once the Domain Controller is set up (e.g., mydomain.com), create a domain admin account:
-     - Right click -> create an Organizational Unit (OU) and name it ADMINS.
-     - Under ADMINS -> New -> User
-7. Set Up **Routing and Remote Access (RAS) for NAT** -> This step allows the Windows 10 client to access the internet via the DC domain controller (Windows Server19).
+6. Once the Domain Controller is set up, create a domain admin account:
+     - Right-click create an Organizational Unit (OU) and name it ADMINS.
+     - Right-click ADMINS -> New -> User and name. 
+7. Set Up **Routing and Remote Access (RAS) for NAT** on Windows Server 2019 (DC)-> This step allows the Windows 10 client to access the internet via the domain controller.
     1.  Open Server Manager on Windows Server 2019.
     2.  Click Manage → Add Roles and Features.
     3.  Role-based or feature-based installation → Click Next.
@@ -101,12 +101,12 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 
 Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox
 1. Install Windows 10 on the second VM.
-2. Assign a static IP or configure DHCP to use the Domain Controller's IP as the DNS server.
+2. Assign a static IP (Internal) or configure DHCP to use the Domain Controller's IP as the DNS server.
 3. Join Windows 10 to the Domain:
   - Go to Settings → System → About → Rename this PC (Advanced settings)
-  - Click Change → Select Domain
-  - Enter homelab.local and provide domain admin credentials (Administrator account).
-Restart the VM.
+  - Click Change → Enter Computer name as "CLIENT1" 
+  - Select Domain and enter "mydomain.com" and provide domain admin credentials (Administrator account) 
+  - Restart the VM.
 
 
 
