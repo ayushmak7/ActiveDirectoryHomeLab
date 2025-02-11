@@ -32,8 +32,8 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 
 Step 1: Installing & Configuring Windows Server 2019 on Oracle VirtualBox
 1. Install Windows Server 2019 on the first VM.
-2. For network configuration: Assign Adapter 1 = NAT and Adapter 2 = Internal Nework, static IP address to the server.
-3. Rename the machine (e.g., DC01) and restart.
+2. Under network configuration: Assign Adapter 1 as NAT and Adapter 2 as Internal Nework, static IP address to the server.
+3. Rename the machine (e.g., MYDOMAIN) and restart.
 4. Install Active Directory Domain Services (AD DS):
    - Open Server Manager → Add Roles and Features
    - Select Active Directory Domain Services (AD DS) and DNS Server
