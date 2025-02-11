@@ -10,44 +10,77 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 
 - <b>PowerShell</b>
 - <b>Command Prompt (CMD)</b>
-- <b>Oracle VirtualBox<b>
-- <b>Windows Server 2019 ISO (Domain Controller)<b>
-- <b>Windows 10 ISO (Client)<b>
-- <b>Active Directory Domain Services (AD DS)<b>
-- <b>Domain Name System (DNS)<b>
-- <b>Dynamic Host Configuration Protocol (DHCP)<b>
-- <b>Remote Access Service / Network Address Translation (RAS/NAT)<b>
+- <b>Oracle VirtualBox</b>
+- <b>Windows Server 2019 ISO (Domain Controller)</b>
+- <b>Windows 10 ISO (Client)</b>
+- <b>Active Directory Domain Services (AD DS)</b>
+- <b>Domain Name System (DNS)</b>
+- <b>Dynamic Host Configuration Protocol (DHCP)</b>
+- <b>Remote Access Service / Network Address Translation (RAS/NAT)</b>
+
 
 <h2>Environments Used </h2>
 
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
-- <b>Windows Server 2019 VM - configured as Domain Controller<b>
-- <b>Windows 10 VM - configured as a domain-joined Client<b>
+- <b>Windows Server 2019 VM - configured as Domain Controller</b>
+- <b>Windows 10 VM - configured as a domain-joined Client</b>
 - <b>Network Configurations - 2 adapters:</b>
   1. NAT
-  2. Internal Network<b>
+  2. Internal Network</b>
 
 
 <h2>Project walk-through:</h2>
 
-Step 1: Installing & Configuring Windows Server 2019 on Oracle VirtualBox
+Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 1. Install Windows Server 2019 on the first VM.
-2. Under network configuration: Assign Adapter 1 as NAT and Adapter 2 as Internal Nework, static IP address to the server.
-3. Rename the machine (e.g., MYDOMAIN) and restart.
+2. Network configuration : Change adapter option -> Rename the two network: e.g., 1. Internet and 2. Internal and  assign a static IP address to the Internal network. 
+3. Rename the device (e.g., DC-winserver19) and restart.
 4. Install Active Directory Domain Services (AD DS):
    - Open Server Manager → Add Roles and Features
    - Select Active Directory Domain Services (AD DS) and DNS Server
    - Complete the installation and restart the VM.
 5. Promote the Server to a Domain Controller:
    - Open Server Manager → Click Promote this server to a domain controller
-   - Select "Add a new forest" and enter a domain name (e.g., homelab.local).
+   - Select "Add a new forest" and enter a domain name (e.g., mydomain.com).
    - Configure DNS and complete the promotion.
+6. Once the Domain Controller is set up (e.g., mydomain.com), create a domain admin account:
+     - Right click -> create an Organizational Unit (OU) and name it ADMINS.
+     - Under ADMINS -> New -> User
+7. Set Up Routing and Remote Access (RAS) for NAT -> This step allows the Windows 10 client to access the internet via the domain controller (DC).
+    1.  Open Server Manager on Windows Server 2019.
+    2.  Click Manage → Add Roles and Features.
+    3.  Role-based or feature-based installation → Click Next.
+    4.  Select your server → Click Next.
+    5.  Under Server Roles, select:
+       - Remote Access
+    6. Click Next, then Next again for features.
+    7. Under Role Services, select:
+       - Routing
+       - Click Add Features when prompted.
+     8. Click Next → Install and wait for installation to complete.
+     9. After installation, open Server Manager → Tools → Routing and Remote Access.
+     10. Right-click your server name → Configure and Enable Routing and Remote Access.
+     11. Choose “Network Address Translation (NAT)” → Click Next.
+     12. Select NAT on Adapter 1 (NAT Interface - Internet) → Click Next.
+     13. Click Finish and Start the service when prompted.
+
+
+
+Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox
+1. Install Windows 10 on the second VM.
+2. Assign a static IP or configure DHCP to use the Domain Controller's IP as the DNS server.
+3. Join Windows 10 to the Domain:
+  - Go to Settings → System → About → Rename this PC (Advanced settings)
+  - Click Change → Select Domain
+  - Enter homelab.local and provide domain admin credentials (Administrator account).
+Restart the VM.
+
 
 
 <p align="center">
 Creating Users with Powershell: <br/>
 <img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
+<br />  
 <br />
 Select the disk:  <br/>
 <img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
