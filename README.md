@@ -24,8 +24,8 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
 - <b>Windows Server 2019 VM - configured as Domain Controller</b>
 - <b>Windows 10 VM - configured as a domain-joined Client</b>
-- <b>Network Configurations - 2 adapters:</b>
-  1. NAT
+- <b>Network Configurations - 2 network adapters:</b>
+  1. NAT (Internet)
   2. Internal Network</b>
 
 
@@ -35,7 +35,7 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 1. Install Windows Server 2019 on the first VM.
 2. Network configuration : Change adapter option -> Rename the two network: e.g., 1. Internet and 2. Internal and  assign a static IP address to the Internal network. 
 3. Rename the device (e.g., DC-winserver19) and restart.
-4. Install Active Directory Domain Services (AD DS):
+4. Install **Active Directory Domain Services (AD DS)**:
    - Open Server Manager → Add Roles and Features
    - Select Active Directory Domain Services (AD DS) and DNS Server
    - Complete the installation and restart the VM.
@@ -46,7 +46,7 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
 6. Once the Domain Controller is set up (e.g., mydomain.com), create a domain admin account:
      - Right click -> create an Organizational Unit (OU) and name it ADMINS.
      - Under ADMINS -> New -> User
-7. Set Up Routing and Remote Access (RAS) for NAT -> This step allows the Windows 10 client to access the internet via the domain controller (DC).
+7. Set Up **Routing and Remote Access (RAS) for NAT** -> This step allows the Windows 10 client to access the internet via the DC domain controller (Windows Server19).
     1.  Open Server Manager on Windows Server 2019.
     2.  Click Manage → Add Roles and Features.
     3.  Role-based or feature-based installation → Click Next.
@@ -61,8 +61,40 @@ Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox
      9. After installation, open Server Manager → Tools → Routing and Remote Access.
      10. Right-click your server name → Configure and Enable Routing and Remote Access.
      11. Choose “Network Address Translation (NAT)” → Click Next.
-     12. Select NAT on Adapter 1 (NAT Interface - Internet) → Click Next.
+     12. Select NAT on Adapter 1 (NAT Interface - **Internet**) → Click Next.
      13. Click Finish and Start the service when prompted.
+- ✅ Now, the Domain Controller acts as a NAT router for the internal network.
+  
+8. Set up **DHCP** on Windows Server19 (DC):
+     1. Install DHCP using Server Manager: Open Server Manager → Manage → Add Roles and Features.
+     2. Click Next → Select Role-based or Feature-based Installation.
+     3. Select your server → Click Next.
+     4. Under Server Roles, select:
+        - DHCP Server
+     5. Click Next → Next → Install and wait for installation to complete.
+     6. Click Close when done.
+   
+9. Configure **DHCP Server Scope**:
+    1. Open Server Manager → Tools → DHCP.
+    2. In the left panel, expand your server name → IPv4.
+    3. Right-click IPv4 → New Scope.
+    4. Click Next, then enter:
+       - Scope Name: AD_Network
+       - Starting IP: 192.168.1.100
+       -  Ending IP: 192.168.1.200
+       -  Subnet Mask: 255.255.255.0
+       - Click Next.
+    5. Add Exclusions (Optional) -> If you want to exclude certain addresses (e.g., 192.168.1.1 for the DC), add them here. Click Next.
+    6. Lease Duration:
+        - Keep default (8 days) or adjust as needed → Click Next.
+    7. Configure DHCP Options:
+       - Router (Gateway): 192.168.1.1 → Click Next.
+       -  DNS Servers:
+            - Preferred DNS: 192.168.1.1
+            - Click Next.
+    8. Click Activate Scope → Finish.
+- ✅ Now, DHCP will automatically assign IPs to Windows 10 clients!
+
 
 
 
