@@ -21,15 +21,27 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 <h2>Environments Used </h2>
 
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
-- <b>Windows Server 2019 VM -</b> configured as Domain Controller
-- <b>Windows 10 VM -<b> configured as a domain-joined Client
-- <b>Network Configurations on DC -> 2 adapters: 1. NAT = Internet (assigned by Oracle VirtualBox) and 2. Internal Network = Static IP, for communication between the Domain Controller and other virtual machines (Windows 10 client)
-
-
-- <p>This is a <b>bold</b> word in a sentence.</p>
+- <b>Windows Server 2019 VM - configured as Domain Controller<b>
+- <b>Windows 10 VM - configured as a domain-joined Client<b>
+- <b>Network Configurations - 2 adapters:</b>
+  1. NAT
+  2. Internal Network<b>
 
 
 <h2>Project walk-through:</h2>
+
+Step 1: Installing & Configuring Windows Server 2019 on Oracle VirtualBox
+1. Install Windows Server 2019 on the first VM.
+2. For network configuration: Assign Adapter 1 = NAT and Adapter 2 = Internal Nework, static IP address to the server.
+3. Rename the machine (e.g., DC01) and restart.
+4. Install Active Directory Domain Services (AD DS):
+   - Open Server Manager → Add Roles and Features
+   - Select Active Directory Domain Services (AD DS) and DNS Server
+   - Complete the installation and restart the VM.
+5. Promote the Server to a Domain Controller:
+   - Open Server Manager → Click Promote this server to a domain controller
+   - Select "Add a new forest" and enter a domain name (e.g., homelab.local).
+   - Configure DNS and complete the promotion.
 
 
 <p align="center">
