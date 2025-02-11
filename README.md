@@ -105,7 +105,7 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 
 
 
-Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox
+**Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox**
 1. Install Windows 10 on the second VM.
 2. VirtualBox network settings: Configure Windows 10 (Client) VM:  
    - Open VirtualBox → Select Windows 10 VM → Settings → Network.
