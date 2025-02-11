@@ -21,15 +21,15 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 <h2>Environments Used </h2>
 
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
-- <b>Windows Server 2019 VM - configured as Domain Controller<b>
-- <b>Windows 10 VM - configured as a domain-joined Client<b>
+- <b>Windows Server 2019 VM -</b> configured as Domain Controller
+- <b>Windows 10 VM -<b> configured as a domain-joined Client
 - <b>Network Configurations on DC -> 2 adapters: 1. NAT = Internet (assigned by Oracle VirtualBox) and 2. Internal Network = Static IP, for communication between the Domain Controller and other virtual machines (Windows 10 client)
 
+
+- <p>This is a <b>bold</b> word in a sentence.</p>
+
+
 <h2>Project walk-through:</h2>
-
-
-
-
 
 
 <p align="center">
