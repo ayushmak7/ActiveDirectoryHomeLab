@@ -1,12 +1,12 @@
-<h1>Active Directory Home Lab using PowerShell</h1>
+<h1>💻Active Directory Home Lab using PowerShell</h1>
 
 
-<h2>Description</h2>
+<h2>📑Description</h2>
 This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox, utilizing Windows Server 2019 as a Domain Controller (DC) and Windows 10 as a domain-joined client. The setup includes configuring Active Directory Domain Services (AD DS), DHCP, Remote Access Service (RAS) with NAT, and bulk user creation using PowerShell scripting. The goal is to simulate a real-world enterprise environment for learning, testing, and improving Active Directory management skills.
 <br />
 
 
-<h2>Languages and Utilities Used</h2>
+<h2>🛠️Languages and Utilities Used</h2>
 
 - <b>PowerShell</b>
 - <b>Command Prompt (CMD)</b>
@@ -19,7 +19,7 @@ This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox, utilizi
 - <b>Remote Access Service / Network Address Translation (RAS/NAT)</b>
 
 
-<h2>Environments Used </h2>
+<h2>🖥️Environments Used </h2>
 
 - <b>Host Machine: Windows (with Oracle VirtualBox Installed)</b>
 - <b>Windows Server 2019 VM - configured as Domain Controller</b>
