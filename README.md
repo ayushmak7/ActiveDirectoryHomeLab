@@ -217,7 +217,7 @@ Verify that domain authentication is working.
 </p>
 
 <p>
-  📌 Conclusion
+ <h2>📌 Conclusion</h2>
 This lab provides hands-on experience in Active Directory administration, covering essential concepts such as domain setup, DHCP, NAT, PowerShell automation, and domain user management. By completing this setup, you gain practical knowledge that can be applied in real-world IT environments.
 
 ✅ Now, your Active Directory home lab is fully operational! 🚀
