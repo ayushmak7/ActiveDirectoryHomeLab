@@ -190,14 +190,13 @@ Confirm new users are created:  <br/>
 - ✅ Windows 10 client connected to the domain which ensures that the Windows 10 clients can communicate with AD and access the internet through NAT.
 
 <b>Join Windows 10 to the Domain:</b><br/>
-<img src="https://i.imgur.com/l4G3oqf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/l4G3oqf.png" height="80%" width="80%" alt="Windows 10 Steps"/>
 <br>
 
 
 <b>Test Domain Authentication:</b><br>
-Log into the Windows 10 machine using one of the newly created user accounts.
-Verify that domain authentication is working.
-<img src="https://i.imgur.com/in7viYg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Log into the Windows 10 machine using one of the newly created user accounts. Verify that domain authentication is working.<br/>
+<img src="https://i.imgur.com/in7viYg.png" height="80%" width="80%" alt="Windows 10 Steps"/>
 <br>
 
 <h2>Testing DHCP and Internet Access</h2>
@@ -207,12 +206,12 @@ Verify that domain authentication is working.
 
 
 <b>Test Domain Controller Connection</b>(Expected output: Replies from 172.16.0.1, confirming connectivity):<br/>
-<img src="https://i.imgur.com/gZpyYiv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/gZpyYiv.png" height="80%" width="80%" alt="Windows 10 Steps"/>
 <br>
 
 
 <b>Test Internet Access</b> (Expected output: Successful replies, confirming NAT is working): <br/>
-<img src="https://i.imgur.com/QpbcvpR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/QpbcvpR.png" height="80%" width="80%" alt="Windows 10 Steps"/>
 <br>
 </p>
 
