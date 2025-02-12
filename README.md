@@ -102,10 +102,83 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
     8. Click Activate Scope → Finish.
 - ✅ Now, DHCP server will automatically assign IPs to Windows 10 clients!
 
+**Step 2: Creating Active Directory Users with PowerShell on Windows Server (DC)**
+1. Now that the Active Directory (AD) Domain Controller is set up, you can automate user creation using a PowerShell script. The script reads names from a names.txt file and creates users in AD.
+  - Before running the script, confirm:
+    - ✅ Active Directory Domain Services (AD DS) is installed on Windows Server 2019.
+    - ✅ Windows Server is a Domain Controller (DC).
+    - ✅ PowerShell Execution Policy allows scripts (modify if needed using Set-ExecutionPolicy Unrestricted).
+    - ✅Save the PowerShell script as Create-ADUsers.ps1 and store it and names.txt file in the same directory (e.g., C:\Users\Administrator\Desktop\ADUsers).
+      
+      
+2. Prepare names.txt File
+- This file should contain one user per line, for example:
+  - John Doe
+  - Jane Smith
+  - Michael Jackson
+  - Anthony Davis
+3.  Create PowerShell Script (Create-ADUsers.ps1)
+- Save the following PowerShell script as Create-ADUsers.ps1 in the same folder as names.txt file (e.g., C:\Users\Administrator\Desktop\ADUsers).
+- PowerShell Script:
+
+  
+```powershell
+# This is a PowerShell script to create Active Directory users
+
+# ----- Edit these Variables for your own Use Case ----- #
+$PASSWORD_FOR_USERS   = "Password1"
+$USER_FIRST_LAST_LIST = Get-Content .\names.txt
+# ------------------------------------------------------ #
+
+$password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+
+foreach ($n in $USER_FIRST_LAST_LIST) {
+    $first = $n.Split(" ")[0].ToLower()
+    $last = $n.Split(" ")[1].ToLower()
+    $username = "$($first.Substring(0,1))$($last)".ToLower()
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $first `
+               -Surname $last `
+               -DisplayName $username `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+}
+```
+
+  - Navigate to the directory where the script is stored and run the following commands and press "Run Script" button
+
+<p align="center">
+Creating Users with Powershell: <br/>
+<img src="https://i.imgur.com/o3grx4D.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />  
+<br />
+Confirm new users are created:  <br/>
+<img src="https://i.imgur.com/RZiRQg2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
 
 
 
-**Step 2: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox**
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Step 3: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox**
 1. Install Windows 10 on the second VM.
 2. VirtualBox network settings: Configure Windows 10 (Client) VM:  
    - Open VirtualBox → Select Windows 10 VM → Settings → Network.
@@ -119,15 +192,8 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
 
 
 
-<p align="center">
-Creating Users with Powershell: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />  
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
+
+
 Enter the number of passes: <br/>
 <img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
