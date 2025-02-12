@@ -2,7 +2,7 @@
 
 
 <h2>📑Description</h2>
-This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox to simulate a real-world enterprise environment using Windows Server 2019 as a Domain Controller (DC) and Windows 10 as a domain-joined client. The setup includes configuring Active Directory Domain Services (AD DS), DHCP, Remote Access Service (RAS) with NAT for internet access, and automting bulk user creation using PowerShell scripting. The goal is to gain hands-on experience in domain management, network configuration, and user administration within an enterprise setup. 🚀
+This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox to simulate a real-world enterprise environment using Windows Server 2019 as a Domain Controller (DC) and Windows 10 as a domain-joined client. The setup includes configuring Active Directory Domain Services (AD DS), DHCP, Remote Access Service (RAS) with NAT for internet access, and automating bulk user creation using PowerShell scripting. The goal is to gain hands-on experience in domain management, network configuration, and user administration within an enterprise setup. 🚀
 <br>
 
 
