@@ -181,7 +181,7 @@ Confirm new users are created:  <br/>
 1. Install Windows 10 on the second VM.
 2. VirtualBox network settings: Configure Windows 10 (Client) VM:  
    - Open VirtualBox → Select Windows 10 VM → Settings → Network.
-   - Adapter 1 (Attached to : Internal Network - intnet -> Internet via NAT on DC)
+   - Adapter 1 (Attached to : Internal Network - name: intnet -> Internet via NAT on DC)
 3. Join Windows 10 to the Domain:
     - Go to Settings → System → About → Rename this PC (Advanced settings)
     - Click Change → Enter Computer name as "CLIENT1" 
