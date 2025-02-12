@@ -166,18 +166,6 @@ Confirm new users are created:  <br/>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 **Step 3: Installing & Configuring Windows 10 (Client) on Oracle VirtualBox**
 1. Install Windows 10 on the second VM.
 2. VirtualBox network settings: Configure Windows 10 (Client) VM:  
@@ -188,20 +176,25 @@ Confirm new users are created:  <br/>
     - Click Change → Enter Computer name as "CLIENT1" 
     - Select Domain and enter "mydomain.com" and provide domain admin credentials (Administrator account)
     -  Restart the VM.
-- ✅ Windows 10 client connected to the domain
+- ✅ Windows 10 client connected to the domain which ensures that the Windows 10 clients can communicate with AD and access the internet through NAT.
 
-
-
-
-
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+ Join Windows 10 to the Domain:<br/>
+<img src="https://i.imgur.com/l4G3oqf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
+
+
+
+
+
+<h2>Testing DHCP and Internet Access</h2>
+Check Assigned IP on Windows 10:  <br/>
+<img src="https://i.imgur.com/P0grTQm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
+
 Wait for process to complete (may take some time):  <br/>
 <img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
