@@ -2,7 +2,7 @@
 
 
 <h2>Description</h2>
-This project involves setting up a home lab envrionment to stimulate an enterprise Active Directory (AD) setup using Windows Server 2019 as the Domain Controller (DC) and Windows 10 as a client machine. This lab will be hosted on Oracle VirtualBox, with configurations and automation done through PowerShell script. Configuring and running this lab will allow you to test and practice AD management, Group Policy and user authentication in a controlled environment. You will also gain an understanding of how windows domain networks work. 
+This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox, utilizing Windows Server 2019 as a Domain Controller (DC) and Windows 10 as a domain-joined client. The setup includes configuring Active Directory Domain Services (AD DS), DHCP, Remote Access Service (RAS) with NAT, and user creation using PowerShell scripting. The goal is to simulate a real-world enterprise environment for learning, testing, and improving Active Directory management skills.
 <br />
 
 
@@ -28,31 +28,42 @@ This project involves setting up a home lab envrionment to stimulate an enterpri
   1. Adapter 1 (NAT) → Provides internet access to the Domain Controller.
   2. Adapter 2 (Internal Network - intnet) → Allows communication between VMs.
 
+<h2>🎯 Objective</h2>
 
-<h2>Project walk-through:</h2>
+1. Set up and configure **Active Directory Domain Services (AD DS)** on **Windows Server 2019**.
+2. Promote the server to a **Domain Controller (DC)** and create a domain (mydomain.com).
+3. Configure **DHCP** on the Domain Controller to assign IP addresses dynamically.
+4. Set up **RAS/NAT** on the DC to allow internal network VMs to access the internet.
+5. Join a **Windows 10 client** machine to the domain **(mydomain.com)**.
+6. Create Active Directory users using a **PowerShell script**, automating bulk (+1K) user creation.
+7. **Verify** that users can log in to the domain from the Windows 10 client.
+
+
+
+<h2>🛠️Project walk-through:</h2>
 
 **Step 1: Installing & Configuring Windows Server 2019 (DC) on Oracle VirtualBox**
 1. Install Windows Server 2019 on the first VM.
-2. VirtualBox network settings: Configure Windows Server 2019 VM:
+2. Configure two network adapters on Windows Server 2019 VM:
    - Open VirtualBox → Select Windows Server 2019 VM → Settings → Network.
-   - Adapter 1 (Attached to : NAT - Internet Access)
-   - Adapter 2 (Attached to : Internal Network - intnet)
-      
-4. Rename the device (e.g., DC-winserver19) and restart.
-5. Install **Active Directory Domain Services (AD DS)** on Windows Server 2019 (DC):
+   - Adapter 1: NAT (for internet access)
+   - Adapter 2: Internal Network (for domain communication)
+      - Assign a static IP to the internal network adapter. e.g.,172.16.0.1)
+3. Rename the device (e.g., DC-winserver19) and restart.
+4. Install **Active Directory Domain Services (AD DS)** on Windows Server 2019 (DC):
    - Open Server Manager → Add Roles and Features
    - Select Active Directory Domain Services (AD DS) and DNS Server
    - Complete the installation and restart the VM.
-6. Promote the Server to a Domain Controller:
+5. Promote the Server to a Domain Controller:
    - Open Server Manager → Click Promote this server to a domain controller
    - Select "Add a new forest" and enter a domain name (e.g., mydomain.com as FQDN).
    - Configure DNS and complete the promotion.
-7. Once the Domain Controller is set up, create a domain admin account:
+6. Once the Domain Controller is set up, create a domain admin account:
      - Right-click create an Organizational Unit (OU) and name it ADMINS.
      - Right-click ADMINS -> New -> User and name.
  - ✅ Active Directory (AD DS) on Windows Server 2019
 
-8. Set Up **Routing and Remote Access (RAS) for NAT** on Windows Server 2019 (DC)-> This step allows the Windows 10 client to access the internet via the domain controller.
+7. Set Up **Routing and Remote Access (RAS) for NAT** on Windows Server 2019 (DC)-> This step allows the Windows 10 client to access the internet via the domain controller.
     1.  Open Server Manager on Windows Server 2019.
     2.  Click Manage → Add Roles and Features.
     3.  Role-based or feature-based installation → Click Next.
@@ -178,34 +189,40 @@ Confirm new users are created:  <br/>
     -  Restart the VM.
 - ✅ Windows 10 client connected to the domain which ensures that the Windows 10 clients can communicate with AD and access the internet through NAT.
 
- Join Windows 10 to the Domain:<br/>
+<b>Join Windows 10 to the Domain:</b><br/>
 <img src="https://i.imgur.com/l4G3oqf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
+<br>
 
 
-
-
-
-
+<b>Test Domain Authentication:</b><br>
+Log into the Windows 10 machine using one of the newly created user accounts.
+Verify that domain authentication is working.
+<img src="https://i.imgur.com/in7viYg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br>
 
 <h2>Testing DHCP and Internet Access</h2>
-Check Assigned IP on Windows 10:  <br/>
-<img src="https://i.imgur.com/P0grTQm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
+<b>Check Assigned IP on Windows 10 Client</b> (Expected output: IP should be in the 172.16.0.100-200 range, assigned by DHCP):<br/>
+<img src="https://i.imgur.com/MQdNbrM.png" height="80%" width="80%" alt="Windows 10 Steps"/>
+<br>
 
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<b>Test Domain Controller Connection</b>(Expected output: Replies from 172.16.0.1, confirming connectivity):<br/>
+<img src="https://i.imgur.com/gZpyYiv.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br>
+
+
+<b>Test Internet Access</b> (Expected output: Successful replies, confirming NAT is working): <br/>
+<img src="https://i.imgur.com/QpbcvpR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br>
 </p>
+
+<p>
+  📌 Conclusion
+This lab provides hands-on experience in Active Directory administration, covering essential concepts such as domain setup, DHCP, NAT, PowerShell automation, and domain user management. By completing this setup, you gain practical knowledge that can be applied in real-world IT environments.
+
+✅ Now, your Active Directory home lab is fully operational! 🚀
+</p>
+
 
 <!--
  ```diff
