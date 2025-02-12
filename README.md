@@ -48,7 +48,7 @@ This lab sets up an Active Directory (AD) home lab on Oracle VirtualBox, utilizi
    - Open VirtualBox → Select Windows Server 2019 VM → Settings → Network.
    - Adapter 1: NAT (for internet access)
    - Adapter 2: Internal Network (for domain communication)
-      - Assign a static IP to the internal network adapter. e.g.,172.16.0.1)
+      - Assign a static IP to the internal network adapter (e.g.,172.16.0.1).
 3. Rename the device (e.g., DC-winserver19) and restart.
 4. Install **Active Directory Domain Services (AD DS)** on Windows Server 2019 (DC):
    - Open Server Manager → Add Roles and Features
